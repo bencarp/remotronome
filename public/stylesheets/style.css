@@ -7,6 +7,12 @@ a {
   color: #00B7FF;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #002232;
+  }
+}
+
 @media all and (orientation:portrait) {
   /* Styles for Portrait screen */
   #splashicon {
