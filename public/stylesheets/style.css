@@ -1,8 +1,22 @@
 body {
-  padding: 50px;
+  background-color: #f0f0f0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+@media all and (orientation:portrait) {
+  /* Styles for Portrait screen */
+  #splashicon {
+    width: 100%;
+  }
+}
+
+@media all and (orientation:landscape) {
+  /* Styles for Portrait screen */
+  #splashicon {
+    height: 96vh;
+  }
 }
