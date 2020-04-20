@@ -79,10 +79,38 @@ a {
 @media all and (orientation:landscape) {
   /* Styles for Portrait screen */
   #splashicon {
-    height: 96vh;
+    width: 48vw;
+    margin: 0 auto;
+    position: absolute;
   }
 
   button {
+    margin-left: 2vw;
+    width: 48vw;
+    height: 20vh;
+    border-radius: 10px;
+    border-color: #002232;
+    float: right;
+    top: 0;
+  }
 
+  #newsessionbutton {
+    margin-top: 2vh;
+  }
+
+  #joinsessionbutton {
+
+  }
+
+  #infobutton {
+
+  }
+
+  #heart {
+    text-align: right;
+    bottom: 0;
+    right: 2vh;
+    position: absolute;
+    color: #ff7f2a;
   }
 }
