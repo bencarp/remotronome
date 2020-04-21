@@ -114,11 +114,16 @@ a {
     top: 0;
   }
 
+  #buttonheart {
+    position: relative;
+  }
+
   #heart {
-    text-align: center;
-    bottom: 0;
+    text-align: right;
     position: absolute;
-    width: 96%;
+    width: 99.3%;
+    top: 66vh;
+    height: 100%;
     color: #ff7f2a;
   }
 }
