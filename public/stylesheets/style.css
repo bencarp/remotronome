@@ -1,8 +1,8 @@
 body {
   background-color: #f0f0f0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 a {
@@ -78,42 +78,47 @@ a {
     border-color: #002232;
   }
 
+  #infobutton {
+    margin-bottom: 1vh;
+  }
+
   #heart {
     text-align: center;
     bottom: 0;
-    position: absolute;
-    width: 96%;
+    position: relative;
+    width: 100%;
     color: #ff7f2a;
   }
 }
 
 @media all and (orientation:landscape) {
-  /* Styles for Portrait screen */
+  /* Styles for Landscape screen */
   #splashicon {
-    width: 48vw;
+    width: 44vw;
     margin: 0 auto;
     position: absolute;
   }
 
+
   button {
     margin-left: 2vw;
-    width: 48vw;
+    width: 46vw;
     height: 20vh;
     border-radius: 10px;
     border-color: #002232;
-    float: right;
-    top: 0;
+    float: right
   }
 
   #newsessionbutton {
     margin-top: 2vh;
+    top: 0;
   }
 
   #heart {
     text-align: center;
     bottom: 0;
-    width: 100%;
     position: absolute;
+    width: 96%;
     color: #ff7f2a;
   }
 }
