@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="icon" type="image/svg+xml" href="/images/icon.svg">
+    <link rel='stylesheet' href='/stylesheets/session.css' />
+    <script type="text/javascript" src="/javascripts/sharebuttons.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+    <div id="header">
+        <div id="portraitHeader">
+            <a href="/session"> <!-- Change later -->
+                <img id="splashicon" src="/images/splashicon.svg" />
+            </a>
+            <div id="connectionDisplay">
+                <p id="amountSynced"><%= synchronizedNumber %></p>
+                <p id="slash">/</p>
+                <p id="amountConnected"><%= connectedNumber %></p>
+                <p id="textSynced">SYNCHRONIZED</p>
+                <p id="textConnected">CONNECTED</p>
+            </div>
+            <img src="/images/exiticon.svg" onclick="exit" />
+        </div>
+        <div id="share">
+            <p id="lonely">It's lonely in here! Let's invite some fellow musicians:</p>
+            <img src="/images/shareicon.svg" />
+            <p id="sharetext">SHARE THIS SESSION</p>
+            <a href="<%= "https://wa.me/?text=" + shareURL %>">
+               <img src="/images/whatsapp.svg" id="whatsapp" />
+            </a>
+            <div class='skype-share' data-href='' data-lang='' data-text="<%= shareURL %>" data-style='circle' ></div>
+            <div id="clipboard" onclick=copyToClipboard() >
+                <img src="/images/clipboard.svg" />
+            </div>
+            <div id="systemShare" onclick=systemShare() >
+                <img src="/images/systemshare.svg" />
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
