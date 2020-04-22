@@ -13,7 +13,7 @@
 <body>
     <div id="header">
         <div id="portraitHeader">
-            <a href="/session"> <!-- Change later -->
+            <a href="javascript:window.location.href=window.location.href">
                 <img id="splashicon" src="/images/splashicon.svg" />
             </a>
             <div id="connectionDisplay">
@@ -23,11 +23,11 @@
                 <p id="textSynced">SYNCHRONIZED</p>
                 <p id="textConnected">CONNECTED</p>
             </div>
-            <img src="/images/exiticon.svg" onclick="exit" />
+            <img src="/images/exit.svg" onclick="exit" />
         </div>
         <div id="share">
             <p id="lonely">It's lonely in here! Let's invite some fellow musicians:</p>
-            <img src="/images/shareicon.svg" />
+            <img src="/images/share.svg" />
             <p id="sharetext">SHARE THIS SESSION</p>
             <a href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
                <img src="/images/whatsapp.svg" id="whatsapp" />
@@ -35,6 +35,7 @@
             <div class='skype-share' data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='circle' ></div>
             <div id="clipboard" onclick=copyToClipboard() >
                 <img src="/images/clipboard.svg" />
+                <span class="clipboardPopUp" id="clipboardPopUp">Session link copied!</span>
             </div>
             <div id="systemShare" onclick=systemShare() >
                 <img src="/images/systemshare.svg" />
