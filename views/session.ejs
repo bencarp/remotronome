@@ -2,6 +2,8 @@
 <html>
 <head>
     <title><%= title %></title>
+    <meta name="description" content="Making music together via video call can be frustrating. Use Remotronome to make sure everyone is on the same beat." />
+    <meta property="og:image" content="/images/splashicon-300dpi.png">
     <link rel="icon" type="image/svg+xml" href="/images/icon.svg">
     <link rel='stylesheet' href='/stylesheets/session.css' />
     <script type="text/javascript" src="/javascripts/sharebuttons.js"></script>
@@ -27,10 +29,10 @@
             <p id="lonely">It's lonely in here! Let's invite some fellow musicians:</p>
             <img src="/images/shareicon.svg" />
             <p id="sharetext">SHARE THIS SESSION</p>
-            <a href="<%= "https://wa.me/?text=" + shareURL %>">
+            <a href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
                <img src="/images/whatsapp.svg" id="whatsapp" />
             </a>
-            <div class='skype-share' data-href='' data-lang='' data-text="<%= shareURL %>" data-style='circle' ></div>
+            <div class='skype-share' data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='circle' ></div>
             <div id="clipboard" onclick=copyToClipboard() >
                 <img src="/images/clipboard.svg" />
             </div>
