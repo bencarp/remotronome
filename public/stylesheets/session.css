@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+}
+
+@media all and (orientation:portrait) {
+    /* Styles for Portrait screen */
+
+    #header {
+        background: red;
+        opacity: 0.4;
+        height: 22%;
+        width: 100%;
+        position: fixed;
+    }
+
+    #portraitHeader {
+        background: green;
+        opacity: 0.7;
+        height: 75%;
+        width: 100%;
+    }
+
+    #splashicon {
+        background-color: #002232;
+        height: 100%;
+        width: 25%;
+    }
+
+    #connectionDisplay {
+        background-color: darkslategrey;
+        display: none;
+    }
+
+    #exitButton {
+        display: inline;
+        text-align: center;
+        width: 25%;
+        position: relative;
+    }
+
+    #exitButton > #exitIcon,#exitText {
+        background-color: #002232;
+        width: 25%;
+        height: 100%;
+        float: right;
+        margin: 0 auto;
+    }
+
+    #exitButton > #exitIcon {
+    }
+
+    #exitButton > #exitText {
+        display: block;
+        position: absolute;
+        bottom: 0;
+    }
+
+    #share {
+        background: yellow;
+        opacity: 0.7;
+        width: 100%;
+        height: 25%;
+        position: relative;
+    }
+
+    #skype-share {
+        display: inline;
+    }
+
+    #skype-share > #skypeLogo {
+        height: 100%;
+    }
+
+    #shareIcon,#sharetext,#whatsAppIcon {
+        display: inline;
+        height: 100%;
+    }
+
+    #clipboard {
+        display: inline;
+    }
+
+    #clipboard > #clipboardIcon {
+        height: 100%;
+    }
+
+    #systemShare {
+        display: inline;
+    }
+
+    #systemShare > #systemShareIcon {
+        height: 100%;
+    }
+
+    #lonely {
+        display: none; /* For now, will be pop up later */
+    }
+    .clipboardPopUp {
+        display: none;
+    }
+}
+
+@media all and (orientation:landscape) {
+    /* Styles for Landscape screen */
+
+}

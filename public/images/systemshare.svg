@@ -8,14 +8,23 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="systemshare.svg"
-   inkscape:version="1.0rc1 (a7365f01a8, 2020-04-20)"
+   inkscape:version="1.0rc1 (c991b8df87, 2020-04-22)"
    id="svg8"
    version="1.1"
-   viewBox="0 0 132.29166 132.29167"
-   height="500"
-   width="500">
+   viewBox="0 0 112.45989 138.25707"
+   height="522.54639"
+   width="425.04526">
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect844"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Use fill-rule evenodd on &lt;b&gt;fill and stroke&lt;/b&gt; dialog if no flatten result after convert clip to paths." />
     <inkscape:path-effect
        message="Use fill-rule evenodd on &lt;b&gt;fill and stroke&lt;/b&gt; dialog if no flatten result after convert clip to paths."
        hide_clip="false"
@@ -37,13 +46,31 @@
          id="rect896"
          style="display:none;fill:none;stroke:#000000;stroke-width:3.95674;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314" />
       <path
-         d="M 13.520835,17.593373 H 118.77083 V 130.05598 H 13.520835 Z m 49.097363,3.734321 v 7.217137 h 7.612591 v -7.217137 z"
+         d="M 10.207555,14.280093 H 122.08411 V 133.36926 H 10.207555 Z M 58.957916,16.63835 V 34.470964 H 73.886529 V 16.63835 Z"
          class="powerclip"
          style="fill:none;stroke:#000000;stroke-width:3.95674;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
          id="lpe_path-effect898" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath840">
+      <rect
+         style="display:none;fill:#000000;stroke-width:8.22461;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         id="rect842"
+         width="14.928613"
+         height="17.832615"
+         x="58.957916"
+         y="16.63835"
+         d="M 58.957916,16.63835 H 73.886529 V 34.470964 H 58.957916 Z" />
+      <path
+         id="lpe_path-effect844"
+         style="fill:#000000;stroke-width:8.22461;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         class="powerclip"
+         d="M 10.207555,14.280093 H 122.08411 V 133.36926 H 10.207555 Z M 58.957916,16.63835 V 34.470964 H 73.886529 V 16.63835 Z" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
+     lock-margins="true"
      inkscape:window-maximized="1"
      inkscape:window-y="-10"
      inkscape:window-x="0"
@@ -54,15 +81,19 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="230.7678"
-     inkscape:cx="206.12953"
+     inkscape:cy="218.74908"
+     inkscape:cx="48.20189"
      inkscape:zoom="0.98378785"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     fit-margin-top="20"
+     fit-margin-left="20"
+     fit-margin-right="20"
+     fit-margin-bottom="20" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -76,42 +107,47 @@
     </rdf:RDF>
   </metadata>
   <g
+     transform="translate(-7.9375,-7.9375015)"
      id="layer1"
      inkscape:groupmode="layer"
      inkscape:label="Layer 1">
-    <path
-       d="M 20.499205,24.571743 H 111.79246 V 123.07761 H 20.499205 Z"
-       inkscape:path-effect="#path-effect898"
-       clip-path="url(#clipPath894)"
-       sodipodi:type="rect"
-       y="24.571743"
-       x="20.499205"
-       height="98.505867"
-       width="91.293259"
-       id="rect835"
-       style="fill:none;stroke:#000000;stroke-width:3.95674;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314" />
-    <rect
-       y="4.2535081"
-       x="66.060753"
-       height="66.876404"
-       width="0.6993202"
-       id="rect837"
-       style="fill:none;stroke:#000000;stroke-width:3.26943;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314" />
-    <rect
-       transform="rotate(45)"
-       style="fill:none;stroke:#000000;stroke-width:2.20469;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
-       id="rect837-3"
-       width="0.98420554"
-       height="21.607811"
-       x="49.229977"
-       y="-43.450462" />
-    <rect
-       y="-72.196167"
-       x="-44.808846"
-       height="21.607811"
-       width="0.98420554"
-       id="rect837-3-6"
-       style="fill:none;stroke:#000000;stroke-width:2.20469;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
-       transform="rotate(135)" />
+    <g
+       id="g905">
+      <path
+         transform="matrix(1,0,0,0.89088684,-1.9783882,26.540409)"
+         style="fill:none;stroke:#000000;stroke-width:10.5833;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         id="rect835"
+         width="91.293259"
+         height="98.505867"
+         x="20.499205"
+         y="24.571743"
+         sodipodi:type="rect"
+         clip-path="url(#clipPath840)"
+         inkscape:path-effect="#path-effect898;#path-effect844"
+         d="M 20.499205,24.571743 H 111.79246 V 123.07761 H 20.499205 Z" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:10.5833;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         id="rect837"
+         width="0.6993202"
+         height="66.876404"
+         x="64.082367"
+         y="21.068695" />
+      <rect
+         y="-33.154816"
+         x="57.476112"
+         height="21.607811"
+         width="0.98420554"
+         id="rect837-3"
+         style="fill:none;stroke:#000000;stroke-width:7.9375;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         transform="rotate(45)" />
+      <rect
+         transform="rotate(135)"
+         style="fill:none;stroke:#000000;stroke-width:7.9375;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
+         id="rect837-3-6"
+         width="0.98420554"
+         height="21.607811"
+         x="-33.764847"
+         y="-79.693954" />
+    </g>
   </g>
 </svg>

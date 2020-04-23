@@ -14,31 +14,34 @@
     <div id="header">
         <div id="portraitHeader">
             <a href="javascript:window.location.href=window.location.href">
-                <img id="splashicon" src="/images/splashicon.svg" />
+                <img id="splashicon" class="portraitHeaderEl" src="/images/icon-transparent.svg" />
             </a>
-            <div id="connectionDisplay">
-                <p id="amountSynced"><%= synchronizedNumber %></p>
-                <p id="slash">/</p>
-                <p id="amountConnected"><%= connectedNumber %></p>
-                <p id="textSynced">SYNCHRONIZED</p>
-                <p id="textConnected">CONNECTED</p>
+            <div class="portraitHeaderEl" id="connectionDisplay">
+                <p class="connectionDisplayEl" id="amountSynced"><%= synchronizedNumber %></p>
+                <p class="connectionDisplayEl" id="slash">/</p>
+                <p class="connectionDisplayEl" id="amountConnected"><%= connectedNumber %></p>
+                <p class="connectionDisplayElText" id="textSynced">SYNCHRONIZED</p>
+                <p class="connectionDisplayElText" id="textConnected">CONNECTED</p>
             </div>
-            <img src="/images/exit.svg" onclick="exit" />
+            <div class="portraitHeaderEl" id="exitButton">
+                <img id="exitIcon" src="/images/exit.svg" onclick=exit() />
+                <p id="exitText">EXIT</p>
+            </div>
         </div>
         <div id="share">
             <p id="lonely">It's lonely in here! Let's invite some fellow musicians:</p>
-            <img src="/images/share.svg" />
+            <img id="shareIcon" src="/images/share.svg" />
             <p id="sharetext">SHARE THIS SESSION</p>
-            <a href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
-               <img src="/images/whatsapp.svg" id="whatsapp" />
+            <a id="whatsAppShare" href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
+               <img id="whatsAppIcon" src="/images/whatsapp.svg" id="whatsapp" />
             </a>
-            <div class='skype-share' data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='circle' ></div>
+            <div id="skype-share" class='skype-share' data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='' ><img id="skypeLogo" src="/images/skypelogo.svg" /></div>
             <div id="clipboard" onclick=copyToClipboard() >
-                <img src="/images/clipboard.svg" />
+                <img id="clipboardIcon" src="/images/clipboard.svg" />
                 <span class="clipboardPopUp" id="clipboardPopUp">Session link copied!</span>
             </div>
             <div id="systemShare" onclick=systemShare() >
-                <img src="/images/systemshare.svg" />
+                <img id="systemShareIcon" src="/images/systemshare.svg" />
             </div>
         </div>
     </div>
