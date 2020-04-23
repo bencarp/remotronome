@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Lato Hairline';
+    src: url('/fonts/Lato-Hairline.ttf');
+}
+
+@font-face {
+    font-family: 'Lato Light';
+    src: url('/fonts/Lato-Light.ttf');
+}
+
 body {
     margin: 0;
 }
@@ -61,6 +71,11 @@ body {
         width: 100%;
         height: 25%;
         position: relative;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        box-sizing:border-box;
+        overflow: hidden;
+        text-align: center;
     }
 
     #skype-share {
@@ -71,9 +86,18 @@ body {
         height: 100%;
     }
 
-    #shareIcon,#sharetext,#whatsAppIcon {
+    #shareIcon,#whatsAppIcon {
         display: inline;
         height: 100%;
+    }
+
+    #share > #sharetext {
+        display: inline;
+    }
+
+    #sharetext {
+        height: 100%;
+        width: 40%;
     }
 
     #clipboard {
