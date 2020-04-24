@@ -18,21 +18,32 @@
                 <img id="splashicon" class="portraitHeaderEl" src="/images/icon-transparent.svg" />
             </a>
             <div class="portraitHeaderEl" id="connectionDisplay">
-                <p class="connectionDisplayEl" id="amountSynced"><%= synchronizedNumber %></p>
-                <p class="connectionDisplayEl" id="slash">/</p>
-                <p class="connectionDisplayEl" id="amountConnected"><%= connectedNumber %></p>
-                <p class="connectionDisplayElText" id="textSynced">SYNCHRONIZED</p>
-                <p class="connectionDisplayElText" id="textConnected">CONNECTED</p>
+                <div id="amountSyncedDiv" class="connectionRowOne">
+                    <p class="connectionDisplayEl" id="amountSynced"><%= synchronizedNumber %></p>
+                </div>
+                <div id="slashDiv" class="connectionRowOne">
+                    <p class="connectionDisplayEl" id="slash">/</p>
+                </div>
+                <div id="amountConnctedDiv" class="connectionRowOne">
+                    <p class="connectionDisplayEl" id="amountConnected"><%= connectedNumber %></p>
+                </div>
+                <div id="amountSyncedTextDiv" class="connectionRowTwo">
+                    <p class="connectionDisplayElText" id="textSynced">SYNCED</p>
+                </div>
+                <div id="amountConnectedTextDiv" class="connectionRowTwo">
+                    <p class="connectionDisplayElText" id="textConnected">CONNECTED</p>
+                </div>
             </div>
             <div class="portraitHeaderEl" id="exitButton">
                 <img id="exitIcon" src="/images/exit.svg" onclick=exit() />
-                <p id="exitText">EXIT</p>
             </div>
         </div>
         <div id="share">
             <p id="lonely">It's lonely in here! Let's invite some fellow musicians:</p>
-            <img id="shareIcon" src="/images/share.svg" />
-            <img id="sharetext" src="/images/sharesessiontext.svg"/>
+            <div id="shareInvite" onclick=systemShare()>
+                <img id="shareIcon" src="/images/share.svg" />
+                <img id="sharetext" src="/images/sharesessiontext.svg"/>
+            </div>
             <a id="whatsAppShare" href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
                <img id="whatsAppIcon" src="/images/whatsapp.svg" id="whatsapp" />
             </a>
