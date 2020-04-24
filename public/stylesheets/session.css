@@ -61,7 +61,7 @@ a {
 
     .connectionRowOne {
         position: absolute;
-        top: 0;
+        top: 5%;
         bottom: 30%;
         text-align: center;
     }
