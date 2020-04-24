@@ -147,7 +147,6 @@ a {
         box-sizing:border-box;
         border-bottom-style: solid;
         border-bottom-color: #002232;
-        overflow: hidden;
         text-align: center;
     }
 
@@ -180,10 +179,72 @@ a {
 
     #clipboard {
         display: inline;
+        position: relative;
     }
 
     #clipboard > #clipboardIcon {
         height: 100%;
+    }
+
+    #clipboardPopUp {
+        position: fixed;
+        visibility: hidden;
+        text-align: center;
+    }
+
+    #clipboardPopUp #clipboardPopUpText {
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        border-radius: 6px;
+        border: #555;
+        padding: 8px 0;
+        font-family: "Lato Light";
+        position: fixed;
+        right: 1vw;
+        top: calc(1vw + 22%);
+    }
+
+    #clipboardPopUp.show {
+        visibility: visible;
+        -webkit-animation: sharePopUp 5s;
+        animation: sharePopUp 5s
+    }
+
+    @-webkit-keyframes sharePopUp {
+        0% {
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes sharePopUp {
+        0% {
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
     }
 
     #systemShare {
@@ -196,9 +257,6 @@ a {
 
     #lonely {
         display: none; /* For now, will be pop up later */
-    }
-    .clipboardPopUp {
-        display: none;
     }
 }
 

@@ -29,6 +29,10 @@ function copyToClipboard() {
 
     var popup = document.getElementById("clipboardPopUp");
     popup.classList.toggle("show");
+    setTimeout(() => {
+        popup.classList.toggle("show");
+        popup.classList.toggle("hidden");
+        }, 5000);
 }
 
 /* System share (Web share API) */
