@@ -8,6 +8,11 @@
     src: url('/fonts/Lato-Light.ttf');
 }
 
+@font-face {
+    font-family: 'YanoneLight';
+    src: url('../fonts/YanoneKaffeesatz-Light.otf');
+}
+
 body {
     margin: 0;
 }
@@ -255,12 +260,36 @@ a {
         height: 100%;
     }
 
+    /* For now, will be pop up later */
     #lonely {
-        display: none; /* For now, will be pop up later */
+        display: none;
+    }
+
+    #missingLandScape {
+        display: none;
+    }
+
+    #heart {
+        position: fixed;
+        color: #ff7f2a;
+        font-size: 2vh;
+        font-family: YanoneLight;
+        text-align: center;
+        width: 100%;
+        bottom: 2%;
+        margin: 0;
     }
 }
 
 @media all and (orientation:landscape) {
     /* Styles for Landscape screen */
+    body > :not(:last-child) {
+        display: none;
+    }
 
+    #missingLandScape {
+        font-family: "Lato Light";
+        font-size: 15pt;
+        text-align: center;
+    }
 }
