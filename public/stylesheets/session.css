@@ -15,6 +15,7 @@
 
 body {
     margin: 0;
+    padding: 0;
 }
 
 a {
@@ -53,11 +54,11 @@ a {
     }
 
     #amountSynced {
-        left: 10%;
+
     }
 
     #amountConnected {
-        right: 10%;
+
     }
 
     #slash {
@@ -66,14 +67,32 @@ a {
 
     .connectionRowOne {
         position: absolute;
-        top: 5%;
-        bottom: 30%;
         text-align: center;
+        height: 100%;
+    }
+
+    .connectionRowOneOne {
+        text-align: center;
+        position: relative;
+        height: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #connectionDisplayRowOneDiv {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 25%;
+        right: 0;
+        text-align: center;
+        padding-top: 1.5%;
     }
 
     #amountSyncedDiv {
         left: 0;
-        right: 60%;
+        right: 55%;
     }
 
     #slashDiv {
@@ -81,8 +100,8 @@ a {
         right: 40%;
     }
 
-    #amountConnctedDiv {
-        left: 60%;
+    #amountConnectedDiv {
+        left: 55%;
         right: 0;
     }
 
@@ -103,11 +122,10 @@ a {
     }
 
     .connectionDisplayEl {
-        position: relative;
         font-family: "Lato Light";
         color: white;
-        display: inline;
         font-size: 15vw;
+        margin: 0 auto;
     }
 
     .connectionDisplayElText {
@@ -119,27 +137,46 @@ a {
     }
 
     #exitButton {
-        display: inline;
         text-align: center;
-        width: 25%;
-        position: relative;
-    }
-
-    #exitButton > #exitIcon,#exitText {
-        background-color: #002232;
-        width: 25%;
-        height: 100%;
-        float: right;
-        margin: 0 auto;
-    }
-
-    #exitButton > #exitIcon {
-    }
-
-    #exitButton > #exitText {
-        display: block;
-        position: absolute;
+        left: 75%;
+        top: 0;
         bottom: 0;
+        right: 0;
+        position: absolute;
+        background-color: #002232;
+    }
+
+    #exitIconDiv {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 25%;
+    }
+
+    #exitIcon {
+        width: 50%;
+        height: 100%;
+    }
+
+    #exitTextDiv {
+        position: absolute;
+        top: 75%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    #exitText {
+        font-family: "Lato Light";
+        color: white;
+        font-size: 3vw;
+        margin: 0;
+    }
+
+    /* For now, will be pop up later */
+    #lonely {
+        display: none;
     }
 
     #share {
@@ -213,7 +250,8 @@ a {
     #clipboardPopUp.show {
         visibility: visible;
         -webkit-animation: sharePopUp 5s;
-        animation: sharePopUp 5s
+        animation: sharePopUp 5s;
+        z-index: 10;
     }
 
     @-webkit-keyframes sharePopUp {
@@ -260,24 +298,49 @@ a {
         height: 100%;
     }
 
-    /* For now, will be pop up later */
-    #lonely {
-        display: none;
+    /* Metronome styles*/
+    #metronome-area {
+        z-index: 9;
+        position: fixed;
+        top: 22%;
+        left: 0;
+        right: 0;
+        bottom: 3%;
+        background-color: red;
     }
 
+    #metronome-base {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* Remove when starting to build landscape mode */
     #missingLandScape {
         display: none;
     }
 
-    #heart {
+    #heartDiv {
         position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 97%;
+        margin: 0 auto;
+    }
+
+    #heart {
+        position: absolute;
+        top: 10%;
+        bottom: 1%;
+        left: 1%;
+        right: 1%;
         color: #ff7f2a;
-        font-size: 2vh;
+        font-size: 1.5vh;
         font-family: YanoneLight;
         text-align: center;
-        width: 100%;
-        bottom: 2%;
-        margin: 0;
+        margin: 0 auto;
     }
 }
 
