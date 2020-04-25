@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'YanoneLight';
-    src: url('../fonts/YanoneKaffeesatz-Light.otf');
+    src: url('/fonts/YanoneKaffeesatz-Light.otf');
 }
 
 body {
@@ -55,17 +55,12 @@ a {
 
     .connectionRowOne {
         position: absolute;
-        text-align: center;
         height: 100%;
+        padding-top: 1.5%;
     }
 
     .connectionRowOneOne {
-        text-align: center;
-        position: relative;
         height: 100%;
-        display:flex;
-        align-items: center;
-        justify-content: center;
     }
 
     #connectionDisplayRowOneDiv {
@@ -74,8 +69,7 @@ a {
         top: 0;
         bottom: 25%;
         right: 0;
-        text-align: center;
-        padding-top: 1.5%;
+        height: 75%;
     }
 
     #amountSyncedDiv {
@@ -114,6 +108,10 @@ a {
         color: white;
         font-size: 15vw;
         margin: 0 auto;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 
     .connectionDisplayElText {
@@ -315,20 +313,17 @@ a {
         right: 0;
         bottom: 0;
         top: 97%;
-        margin: 0 auto;
     }
 
     #heart {
-        position: absolute;
-        top: 10%;
-        bottom: 1%;
-        left: 1%;
-        right: 1%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
         color: #ff7f2a;
         font-size: 1.5vh;
         font-family: YanoneLight;
-        text-align: center;
         margin: 0 auto;
+        height: 100%;
     }
 }
 
