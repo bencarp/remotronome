@@ -222,19 +222,6 @@
          transform="rotate(-40.114504)"
          d="M 2.6363044,114.4497 H 16.83767 v 4.87613 H 2.6363044 Z" />
     </clipPath>
-    <filter
-       height="1"
-       y="-4.8007781e-10"
-       width="1"
-       x="-1.3914574e-09"
-       id="filter3530"
-       style="color-interpolation-filters:sRGB"
-       inkscape:collect="always">
-      <feGaussianBlur
-         id="feGaussianBlur3532"
-         stdDeviation="1.094349e-08"
-         inkscape:collect="always" />
-    </filter>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient2856"
@@ -299,7 +286,7 @@
          transform="translate(0,-164.70832)" />
       <g
          id="g3520"
-         style="fill:#002232;fill-opacity:0.984314;stroke:#002232;stroke-opacity:0.984314;filter:url(#filter3530)"
+         style="fill:#002232;fill-opacity:0.984314;stroke:#002232;stroke-opacity:0.984314)"
          transform="translate(0,-164.70832)">
         <rect
            y="183.63611"

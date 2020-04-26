@@ -222,19 +222,6 @@
          id="rect3433"
          style="display:inline;opacity:1;fill:#008080;fill-opacity:0.984314;stroke:#008080;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314" />
     </clipPath>
-    <filter
-       inkscape:collect="always"
-       style="color-interpolation-filters:sRGB"
-       id="filter3530"
-       x="-1.3914574e-09"
-       width="1"
-       y="-4.8007781e-10"
-       height="1">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.094349e-08"
-         id="feGaussianBlur3532" />
-    </filter>
     <linearGradient
        gradientUnits="userSpaceOnUse"
        y2="67.045131"
@@ -299,7 +286,7 @@
          style="opacity:1;fill:#803300;fill-opacity:0.984314;stroke:#ff7f2a;stroke-width:8.87839;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.984314;paint-order:normal" />
       <g
          transform="translate(0,-164.70832)"
-         style="fill:#002232;fill-opacity:0.984314;stroke:#002232;stroke-opacity:0.984314;filter:url(#filter3530)"
+         style="fill:#002232;fill-opacity:0.984314;stroke:#002232;stroke-opacity:0.984314)"
          id="g3520">
         <rect
            style="opacity:1;fill:#002232;fill-opacity:0.984314;stroke:#002232;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.984314"
