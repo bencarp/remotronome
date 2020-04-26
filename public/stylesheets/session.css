@@ -313,8 +313,14 @@ a {
         position: absolute;
         top: 2%;
         bottom: 0;
+        left: 2vw;
+        right: 2vw;
+    }
+
+    #tempotexts {
+        position: absolute;
+        top: 0;
         left: 0;
-        right: 0;
     }
 
     #metronome-base {
