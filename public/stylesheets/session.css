@@ -16,6 +16,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
 }
 
 a {
@@ -39,14 +40,14 @@ a {
     }
 
     #splashicon {
-        background-color: #002232;
+        background-color: #f0f0f0;
         height: 100%;
         width: 25%;
     }
 
     #connectionDisplay {
         position: absolute;
-        background-color: #452400;
+        background-color: #cccccc;
         top: 0;
         left: 25%;
         right: 25%;
@@ -105,7 +106,7 @@ a {
 
     .connectionDisplayEl {
         font-family: "Lato Light";
-        color: white;
+        color: black;
         font-size: 15vw;
         margin: 0 auto;
         display:flex;
@@ -128,7 +129,7 @@ a {
 
     .connectionDisplayElText {
         font-family: "Lato Light";
-        color: white;
+        color: black;
         font-size: 3vw;
         margin: 0;
         position: absolute;
@@ -141,7 +142,7 @@ a {
         bottom: 0;
         right: 0;
         position: absolute;
-        background-color: #002232;
+        background-color: #f0f0f0;
     }
 
     #exitIconDiv {
@@ -167,7 +168,7 @@ a {
 
     #exitText {
         font-family: "Lato Light";
-        color: white;
+        color: black;
         font-size: 3vw;
         margin: 0;
     }
@@ -178,7 +179,7 @@ a {
     }
 
     #share {
-        background: yellow;
+        background: #ffdd55;
         width: 100%;
         height: 25%;
         position: relative;
@@ -186,7 +187,8 @@ a {
         padding-bottom: 0.5%;
         box-sizing:border-box;
         border-bottom-style: solid;
-        border-bottom-color: #002232;
+        border-bottom-width: 0.5vw;
+        border-bottom-color: #8c8c8c;
         text-align: center;
     }
 
@@ -304,7 +306,7 @@ a {
         left: 0;
         right: 0;
         bottom: 3%;
-        background-color: red;
+        background-color: #f0f0f0;
     }
 
     #metronome-base {
@@ -353,6 +355,14 @@ a {
 
             #exitButton {
                 background-color: #002232;
+            }
+
+            #exitText {
+                color: white;
+            }
+
+            .connectionDisplayEl,.connectionDisplayElText{
+                color: white;
             }
 
             #share {
