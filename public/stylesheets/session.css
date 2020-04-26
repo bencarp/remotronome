@@ -22,7 +22,7 @@ a {
     text-decoration: none;
 }
 
-@media all and (orientation:portrait) {
+    @media all and (orientation:portrait) {
     /* Styles for Portrait screen */
 
     #header {
@@ -99,7 +99,7 @@ a {
     }
 
     #amountConnectedTextDiv {
-        right: 0%;
+        right: 0;
         left: 57%;
     }
 
@@ -337,6 +337,33 @@ a {
         margin: 0 auto;
         height: 100%;
     }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #002232;
+            }
+
+            #splashicon {
+                background-color: #002232;
+            }
+
+            #connectionDisplay {
+                background-color: #552200;
+            }
+
+            #exitButton {
+                background-color: #002232;
+            }
+
+            #share {
+                background-color: #ffb380;
+                border-bottom: hidden;
+            }
+
+            #metronome-area {
+                background-color: #002232;
+            }
+        }
 }
 
 @media all and (orientation:landscape) {
