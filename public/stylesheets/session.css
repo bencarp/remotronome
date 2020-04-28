@@ -9,6 +9,11 @@
 }
 
 @font-face {
+    font-family: 'Lato Heavy';
+    src: url('/fonts/Lato-Heavy.ttf');
+}
+
+@font-face {
     font-family: 'YanoneLight';
     src: url('/fonts/YanoneKaffeesatz-Light.otf');
 }
@@ -406,6 +411,27 @@ a {
 
         100% {
             fill-opacity: 1;
+        }
+    }
+
+    #bpmValue {
+        padding: 0;
+        font-size: 17pt;
+        font-family: "Lato Heavy";
+    }
+
+    @supports (-webkit-touch-callout: none) {
+        /*  CSS specific to iOS devices,
+            might break in the future */
+
+        /*  This is necessary because mobile
+            safari doesn't understand the svg
+            'dominant-baseline: middle' property */
+
+        /* Once it's supported, just remove this block */
+
+        #bpmValue {
+            transform: translateY(1vh);
         }
     }
 

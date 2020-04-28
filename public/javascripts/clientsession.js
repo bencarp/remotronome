@@ -78,6 +78,14 @@ function weightWrap() {
 /**
  *
  */
+function moveWeight() {
+
+}
+
+
+/**
+ *
+ */
 function play() {
     var playIcon = document.getElementById("playIcon");
     var pauseIcon = document.getElementById("pauseIcon");
