@@ -136,11 +136,43 @@ function start() {
  */
 function stop() {
     var arm = document.getElementById("arm");
-    arm.classList.toggle("oscillate");
-    arm.style.animationDuration = "";
 
-    arm.classList.toggle("backToMiddle");
-    setTimeout(() => {
-        arm.classList.toggle("backToMiddle");
-    }, 1000);
+    /* Calculate current rotation angle */
+
+    // get the computed style object for the element
+    var style = window.getComputedStyle(arm);
+    // form: 'matrix(a, b, c, d, tx, ty)'
+    var transformString = style['-webkit-transform']
+        || style['-moz-transform']
+        || style['transform'] ;
+    var splits = transformString.split(',');
+    // parse the string to get a and b
+    var parenLoc = splits[0].indexOf('(');
+    var a = parseFloat(splits[0].substr(parenLoc+1));
+    var b = parseFloat(splits[1]);
+    // atan2 on b, a gives the angle in radians
+    var rad = Math.atan2(b, a);
+
+    arm.classList.toggle("oscillate");
+
+    let startTime = 0;
+    const totalTime = 200;
+    const animateStep = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        // progress goes from 0.2 to 0 over 0.2s
+        const progress = 1 - ((timestamp - startTime) / totalTime);
+        const currentAngle = rad * progress;
+        arm.style.transform = 'rotate(' + currentAngle + 'rad)';
+        console.log(currentAngle);
+        if (progress > 0) {
+            window.requestAnimationFrame(animateStep);
+        }
+        else {
+            arm.style.transform = 'rotate(0rad)';
+        }
+    }
+
+    window.requestAnimationFrame(animateStep);
+    arm.style.animationDuration = "";
 }
+
