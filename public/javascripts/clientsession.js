@@ -9,8 +9,14 @@ function exit() {
 function weightUnwrap() {
     var weight = document.getElementById("weight");
 
+    weight.classList.toggle("unwrap");
+    setTimeout(() => {
+        weight.classList.toggle("unwrap");
+        weight.style.fillOpacity = "0";
+    }, 300);
+
     let startTime = 0;
-    const totalTime = 500;
+    const totalTime = 300;
     const animateStep = (timestamp) => {
         if (!startTime) startTime = timestamp;
         // progress goes from 0 to 0.5 over 0.5s
@@ -31,16 +37,42 @@ function weightUnwrap() {
         }
     }
     window.requestAnimationFrame(animateStep);
-
-
-    weight.classList.toggle("unwrap");
 }
 
 /**
  *
  */
 function weightWrap() {
+    var weight = document.getElementById("weight");
 
+    weight.classList.toggle("wrap");
+    setTimeout(() => {
+        weight.classList.toggle("wrap");
+        weight.style.fillOpacity = "1";
+    }, 300);
+
+    let startTime = 0;
+    const totalTime = 300;
+    const animateStep = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        // progress goes from 0.5 to 0 over 0.5s
+        const progress = 1 - ((timestamp - startTime) / totalTime);
+        const mx = 64.508936 - 27 * progress;
+        const h = 30.027182 + 57 * progress;
+        const H = 66.644566 - 27 * progress
+
+        weight.setAttribute('d', 'm '
+            + mx
+            + ',35.321161 h '
+            + h
+            + ' l -2.13564,19.129851 H '
+            + H
+            + ' Z');
+        if (progress > 0) {
+            window.requestAnimationFrame(animateStep);
+        }
+    }
+    window.requestAnimationFrame(animateStep);
 }
 
 /**

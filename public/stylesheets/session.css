@@ -382,8 +382,7 @@ a {
     }
 
     #weight.unwrap {
-        animation: weightUnwrap 0.5s;
-        animation-fill-mode: forwards;
+        animation: weightUnwrap 0.3s;
     }
 
     @keyframes weightUnwrap {
@@ -393,6 +392,20 @@ a {
 
         100% {
             fill-opacity: 0;
+        }
+    }
+
+    #weight.wrap {
+        animation: weightWrap 0.3s;
+    }
+
+    @keyframes weightWrap {
+        0% {
+            fill-opacity: 0;
+        }
+
+        100% {
+            fill-opacity: 1;
         }
     }
 
