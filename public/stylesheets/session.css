@@ -347,7 +347,7 @@ a {
     #arm.moveLeft {
         transform-origin: 50% 70%;
         animation: moveLeft ease 0.5s;
-
+        animation-fill-mode: forwards;
     }
 
     @keyframes moveLeft {
