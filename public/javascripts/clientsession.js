@@ -112,6 +112,11 @@ var tempo = 60;
 var beatsPerSecond = tempo / 60;
 var fullOscillation = 2 / beatsPerSecond;
 
+/* This fixes mobile safari not vertically centering the text correctly at page load */
+window.onload = function initTempo() {
+    document.getElementById("bpmValue").textContent = tempo.toString();
+};
+
 /**
  *
  */
