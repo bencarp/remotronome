@@ -17,6 +17,10 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 a {
@@ -315,6 +319,8 @@ a {
         bottom: 0;
         left: 2vw;
         right: 2vw;
+        display: flex;
+        align-items: center;
     }
 
     #tempotexts {
@@ -324,9 +330,72 @@ a {
     }
 
     #metronome-base {
+        position: absolute;
         width: 100%;
         height: 100%;
     }
+
+    #arm {
+        transform-origin: 50% 68%;
+    }
+
+    #arm.moveLeft {
+        transform-origin: 50% 70%;
+        animation: moveLeft ease 0.5s;
+
+    }
+
+    @keyframes moveLeft {
+
+
+        100% {
+            transform: rotate(-25deg);
+        }
+    }
+
+    #arm.oscillate {
+        transform-origin: 50% 70%;
+        animation: oscillate ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: none;
+    }
+
+    @keyframes oscillate {
+        0% {
+            transform: rotate(-25deg);
+        }
+
+        50% {
+            transform: rotate(25deg);
+        }
+
+        100% {
+            transform: rotate(-25deg);
+        }
+    }
+
+    #arm.backToMiddle {
+
+    }
+
+    #weight {
+    }
+
+    #weight.show {
+        animation: weightUnwrap 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes weightUnwrap {
+        0% {
+            fill-opacity: 1;
+        }
+
+        100% {
+            fill-opacity: 0;
+        }
+    }
+
 
 
     /* Remove when starting to build landscape mode */
