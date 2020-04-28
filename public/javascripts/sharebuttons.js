@@ -1,7 +1,7 @@
 /* Skype share button */
 (function(r, d, s) {
     r.loadSkypeWebSdkAsync = r.loadSkypeWebSdkAsync || function(p) {
-        var js, sjs = d.getElementsByTagName(s)[0];
+        let js, sjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(p.id)) { return; }
         js = d.createElement(s);
         js.id = p.id;
@@ -9,7 +9,7 @@
         js.onload = p.callback
         sjs.parentNode.insertBefore(js, sjs);
     };
-    var p = {
+    const p = {
         scriptToLoad: 'https://swx.cdn.skype.com/shared/v/latest/skypewebsdk.js',
         id: 'skype_web_sdk'
     };
@@ -18,7 +18,7 @@
 
 /* Copy to clipboard */
 function copyToClipboard() {
-    var dummy = document.createElement('input'),
+    const dummy = document.createElement('input'),
         text = window.location.href;
 
     document.body.appendChild(dummy);
@@ -27,7 +27,7 @@ function copyToClipboard() {
     document.execCommand('copy');
     document.body.removeChild(dummy);
 
-    var popup = document.getElementById("clipboardPopUp");
+    const popup = document.getElementById("clipboardPopUp");
     popup.classList.toggle("show");
     setTimeout(() => {
         popup.classList.toggle("show");

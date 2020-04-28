@@ -7,7 +7,12 @@ function exit() {
  *
  */
 function weightUnwrap() {
-    var weight = document.getElementById("weight");
+    /* Changing the tempo should only work when paused */
+    const arm = document.getElementById("arm");
+    if (arm.classList.contains("oscillate")) return;
+    if (arm.classList.contains("moveLeft")) return;
+
+    const weight = document.getElementById("weight");
 
     weight.classList.toggle("unwrap");
     setTimeout(() => {
@@ -43,7 +48,12 @@ function weightUnwrap() {
  *
  */
 function weightWrap() {
-    var weight = document.getElementById("weight");
+    /* Changing the tempo should only work when paused */
+    const arm = document.getElementById("arm");
+    if (arm.classList.contains("oscillate")) return;
+    if (arm.classList.contains("moveLeft")) return;
+
+    const weight = document.getElementById("weight");
 
     weight.classList.toggle("wrap");
     setTimeout(() => {
@@ -90,8 +100,8 @@ function moveWeight() {
  *
  */
 function play() {
-    var playIcon = document.getElementById("playIcon");
-    var pauseIcon = document.getElementById("pauseIcon");
+    const playIcon = document.getElementById("playIcon");
+    const pauseIcon = document.getElementById("pauseIcon");
 
     playIcon.style.display = "none";
     pauseIcon.style.display = "inline";
@@ -102,8 +112,8 @@ function play() {
  *
  */
 function pause() {
-    var playIcon = document.getElementById("playIcon");
-    var pauseIcon = document.getElementById("pauseIcon");
+    const playIcon = document.getElementById("playIcon");
+    const pauseIcon = document.getElementById("pauseIcon");
 
     pauseIcon.style.display = "none";
     playIcon.style.display = "inline";
@@ -111,9 +121,9 @@ function pause() {
 }
 
 /* temporarily (no pun intended) */
-var tempo = 60;
-var beatsPerSecond = tempo / 60;
-var fullOscillation = 2 / beatsPerSecond;
+let tempo = 60;
+const beatsPerSecond = tempo / 60;
+const fullOscillation = 2 / beatsPerSecond;
 
 /* This fixes mobile safari not vertically centering the text correctly at page load */
 window.onload = function initTempo() {
@@ -124,7 +134,7 @@ window.onload = function initTempo() {
  *
  */
 function start() {
-    var arm = document.getElementById("arm");
+    const arm = document.getElementById("arm");
 
     arm.classList.toggle("moveLeft");
     setTimeout(() => {
@@ -138,23 +148,23 @@ function start() {
  *
  */
 function stop() {
-    var arm = document.getElementById("arm");
+    const arm = document.getElementById("arm");
 
     /* Calculate current rotation angle */
 
     // get the computed style object for the element
-    var style = window.getComputedStyle(arm);
+    const style = window.getComputedStyle(arm);
     // form: 'matrix(a, b, c, d, tx, ty)'
-    var transformString = style['-webkit-transform']
+    const transformString = style['-webkit-transform']
         || style['-moz-transform']
         || style['transform'] ;
-    var splits = transformString.split(',');
+    const splits = transformString.split(',');
     // parse the string to get a and b
-    var parenLoc = splits[0].indexOf('(');
-    var a = parseFloat(splits[0].substr(parenLoc+1));
-    var b = parseFloat(splits[1]);
+    const parenLoc = splits[0].indexOf('(');
+    const a = parseFloat(splits[0].substr(parenLoc+1));
+    const b = parseFloat(splits[1]);
     // atan2 on b, a gives the angle in radians
-    var rad = Math.atan2(b, a);
+    const rad = Math.atan2(b, a);
 
     arm.classList.toggle("oscillate");
 
@@ -166,7 +176,6 @@ function stop() {
         const progress = 1 - ((timestamp - startTime) / totalTime);
         const currentAngle = rad * progress;
         arm.style.transform = 'rotate(' + currentAngle + 'rad)';
-        console.log(currentAngle);
         if (progress > 0) {
             window.requestAnimationFrame(animateStep);
         }
