@@ -71,6 +71,9 @@ function weightWrap() {
         if (progress > 0) {
             window.requestAnimationFrame(animateStep);
         }
+        else {
+            weight.setAttribute('d','m 64.508936,35.321161 h 30.027182 l -2.13564,19.129851 H 66.644566 Z');
+        }
     }
     window.requestAnimationFrame(animateStep);
 }
