@@ -1,5 +1,11 @@
 .idea
 
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
