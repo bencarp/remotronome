@@ -58,11 +58,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.67582213"
-     inkscape:cx="311.17372"
-     inkscape:cy="318.53899"
+     inkscape:zoom="1.2556372"
+     inkscape:cx="207.49666"
+     inkscape:cy="418.39046"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="arm"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -70,10 +70,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1600"
-     inkscape:window-height="873"
+     inkscape:window-width="3190"
+     inkscape:window-height="1725"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      lock-margins="true"
      showguides="false" />
@@ -1291,19 +1291,23 @@
        id="stick"
        style="display:inline;fill:#cccccc;fill-opacity:1;stroke-width:45.4973;stroke-linejoin:round"
        d="m 75.112625,2.4574351 h 8.466667 V 184.55955 h -8.466667 z" />
-    <path
+    <g
+       ontouchend="weightWrap()"
        ontouchstart="weightUnwrap()"
-       id="weight"
-       style="fill:#cccccc;fill-opacity:1;stroke:#cccccc;stroke-width:1.72292;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 64.508936,35.321161 h 30.027182 l -2.13564,19.129851 H 66.644566 Z"
-       sodipodi:nodetypes="ccccc" />
-    <rect
-       style="fill:none;stroke-width:46.0812;stroke-linejoin:round"
-       id="weightTouchArea"
-       width="108.23898"
-       height="42.768337"
-       x="25.220144"
-       y="24.281898" />
+       id="weightTouch">
+      <path
+         sodipodi:nodetypes="ccccc"
+         d="m 64.508936,35.321161 h 30.027182 l -2.13564,19.129851 H 66.644566 Z"
+         style="fill:#cccccc;fill-opacity:1;stroke:#cccccc;stroke-width:1.72292;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="weight" />
+      <rect
+         y="24.281898"
+         x="25.220144"
+         height="42.768337"
+         width="108.23898"
+         id="weightTouchArea"
+         style="fill:#000000;stroke-width:46.0812;stroke-linejoin:round;fill-opacity:0.00001;" />
+    </g>
   </g>
   <g
      inkscape:label="Layer 1"

@@ -381,7 +381,7 @@ a {
     #weight {
     }
 
-    #weight.show {
+    #weight.unwrap {
         animation: weightUnwrap 0.5s;
         animation-fill-mode: forwards;
     }
@@ -395,8 +395,6 @@ a {
             fill-opacity: 0;
         }
     }
-
-
 
     /* Remove when starting to build landscape mode */
     #missingLandScape {

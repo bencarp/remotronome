@@ -8,7 +8,32 @@ function exit() {
  */
 function weightUnwrap() {
     var weight = document.getElementById("weight");
-    weight.classList.toggle("show");
+
+    let startTime = 0;
+    const totalTime = 500;
+    const animateStep = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        // progress goes from 0 to 0.5 over 0.5s
+        const progress = (timestamp - startTime) / totalTime;
+        const mx = 64.508936 - 27 * progress;
+        const h = 30.027182 + 57 * progress;
+        const H = 66.644566 - 27 * progress
+
+        weight.setAttribute('d', 'm '
+            + mx
+            + ',35.321161 h '
+            + h
+            + ' l -2.13564,19.129851 H '
+            + H
+            + ' Z');
+        if (progress < 1) {
+            window.requestAnimationFrame(animateStep);
+        }
+    }
+    window.requestAnimationFrame(animateStep);
+
+
+    weight.classList.toggle("unwrap");
 }
 
 /**
