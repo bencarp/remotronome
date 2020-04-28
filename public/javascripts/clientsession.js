@@ -140,4 +140,7 @@ function stop() {
     arm.style.animationDuration = "";
 
     arm.classList.toggle("backToMiddle");
+    setTimeout(() => {
+        arm.classList.toggle("backToMiddle");
+    }, 1000);
 }

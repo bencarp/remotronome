@@ -341,7 +341,7 @@ a {
     }
 
     #arm {
-        transform-origin: 50% 68%;
+        transform-origin: 50% 70%;
     }
 
     #arm.moveLeft {
@@ -380,7 +380,7 @@ a {
     }
 
     #arm.backToMiddle {
-
+        transform: rotate(0deg);
     }
 
     #weight {
