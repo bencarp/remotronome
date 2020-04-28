@@ -2,6 +2,11 @@ function exit() {
     window.open("/", "_self");
 }
 
+
+let tempo = 60;
+const beatsPerSecond = tempo / 60;
+const fullOscillation = 2 / beatsPerSecond;
+
 /* BPM slider (weight) functionality */
 /**
  *
@@ -92,6 +97,10 @@ function weightWrap() {
  *
  */
 function moveWeight() {
+    const weightTouchArea = document.getElementById("weightTouch");
+    const upperStick = document.getElementById("upperStick");
+    const lowerStick = document.getElementById("lowerStick");
+
 
 }
 
@@ -120,11 +129,6 @@ function pause() {
     stop();
 }
 
-/* temporarily (no pun intended) */
-let tempo = 60;
-const beatsPerSecond = tempo / 60;
-const fullOscillation = 2 / beatsPerSecond;
-
 /* This fixes mobile safari not vertically centering the text correctly at page load */
 window.onload = function initTempo() {
     document.getElementById("bpmValue").textContent = tempo.toString();
@@ -135,13 +139,34 @@ window.onload = function initTempo() {
  */
 function start() {
     const arm = document.getElementById("arm");
+    const audio = new Audio('/sounds/click.wav');
 
     arm.classList.toggle("moveLeft");
     setTimeout(() => {
         arm.style.animationDuration = fullOscillation.toString() + "s";
         arm.classList.toggle("oscillate");
+        clickInit();
         arm.classList.toggle("moveLeft");
     }, 500);
+
+    function clickInit() {
+        if (arm.classList.contains("oscillate")) {
+            setTimeout(() => {
+                audio.play();
+                click();
+                console.log(fullOscillation);
+            }, 250 * fullOscillation);
+        }
+    }
+
+    function click() {
+        if (arm.classList.contains("oscillate")) {
+            setTimeout(() => {
+                audio.play();
+                click();
+            }, 500 * fullOscillation);
+        }
+    }
 }
 
 /**
