@@ -137,6 +137,7 @@ window.onload = function initTempo() {
 /**
  *
  */
+let clickTimeout;
 function start() {
     const arm = document.getElementById("arm");
     const audio = new Audio('/sounds/click.wav');
@@ -161,7 +162,7 @@ function start() {
 
     function click() {
         if (arm.classList.contains("oscillate")) {
-            setTimeout(() => {
+            clickTimeout = setTimeout(() => {
                 audio.play();
                 click();
             }, 500 * fullOscillation);
@@ -174,6 +175,8 @@ function start() {
  */
 function stop() {
     const arm = document.getElementById("arm");
+
+    clearTimeout(clickTimeout);
 
     /* Calculate current rotation angle */
 
