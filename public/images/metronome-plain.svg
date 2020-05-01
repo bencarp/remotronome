@@ -14,7 +14,7 @@
    viewBox="0 0 158.87165 251.93166"
    version="1.1"
    id="metronome-base"
-   inkscape:version="1.0rc1 (71749a572d, 2020-04-27)"
+   inkscape:version="1.0 (947b245b96, 2020-05-01)"
    sodipodi:docname="metronome-plain.svg">
   <defs
      id="defs2">
@@ -58,11 +58,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.353479"
-     inkscape:cx="46.147783"
-     inkscape:cy="450.17793"
+     inkscape:zoom="0.68333602"
+     inkscape:cx="269.929"
+     inkscape:cy="416.5594"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="arm"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -70,10 +70,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="3190"
-     inkscape:window-height="1725"
+     inkscape:window-width="1600"
+     inkscape:window-height="873"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      lock-margins="true"
      showguides="false" />
@@ -95,7 +95,7 @@
      id="layer5"
      inkscape:label="Layer 3">
     <path
-       id="path912-6"
+       id="border"
        d="M 41.010683,0 A 6.6152616,6.6152616 0 0 0 34.461855,5.671875 L 0.067324,244.375 a 6.6152616,6.6152616 0 0 0 6.546875,7.55664 H 152.25677 a 6.6152616,6.6152616 0 0 0 6.54688,-7.55664 L 124.40522,5.671875 A 6.6152616,6.6152616 0 0 0 117.85834,0 Z m 5.730469,13.228515 H 112.12788 L 144.62005,238.70312 H 14.250917 Z"
        style="display:inline;color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;overflow:visible;visibility:visible;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:13.2292;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000" />
     <path
@@ -1293,9 +1293,9 @@
        d="m 75.112625,55.134445 h 8.466667 V 184.55954 h -8.466667 z" />
     <g
        ontouchend="weightWrap()"
-       ontouchstart="weightUnwrap()"
+       ontouchstart="weightUnwrap(event)"
        id="weightTouch"
-       ontouchmove="moveWeight()">
+       ontouchmove="moveWeight(event)">
       <path
          sodipodi:nodetypes="ccccc"
          d="m 64.508936,35.321161 h 30.027182 l -2.13564,19.129851 H 66.644566 Z"

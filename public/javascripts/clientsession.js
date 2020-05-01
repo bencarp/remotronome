@@ -8,15 +8,19 @@ const beatsPerSecond = tempo / 60;
 const fullOscillation = 2 / beatsPerSecond;
 
 /* BPM slider (weight) functionality */
+
+let initialViewportY;
 /**
  *
  */
-function weightUnwrap() {
+function weightUnwrap(event) {
     /* Changing the tempo should only work when paused */
     const arm = document.getElementById("arm");
     if (arm.classList.contains("oscillate")) return;
     if (arm.classList.contains("moveLeft")) return;
 
+    // For later (moveWeight)
+    initialViewportY = event.touches[0].clientY;
     const weight = document.getElementById("weight");
 
     weight.classList.toggle("unwrap");
@@ -96,12 +100,27 @@ function weightWrap() {
 /**
  *
  */
-function moveWeight() {
+function moveWeight(event) {
+    const arm = document.getElementById("arm");
+    if (arm.classList.contains("oscillate")) return;
+    if (arm.classList.contains("moveLeft")) return;
+
     const weightTouchArea = document.getElementById("weightTouch");
     const upperStick = document.getElementById("upperStick");
     const lowerStick = document.getElementById("lowerStick");
-
-
+    /* Absolute Y coordinate of the touch point relative to viewheight */
+    const viewportY = event.touches[0].clientY;
+    const armTop = arm.getBoundingClientRect().top;
+    const armBottom = arm.getBoundingClientRect().bottom;
+    /* Absolute Y coordinate of the touch point, but relative to the arm's top */
+    const absTouchY = viewportY - armTop;
+    /* Relative Y coordinate of the touch point, 0% (Top of arm) to 100% (Bottom of arm) */
+    const relTouchY = absTouchY / 241.22;
+    /* Transform translateY percentage of the weightTouchArea, from -13% to 49.1% */
+    const armYtransform = 0.621 * relTouchY - 0.13;
+    if ((0 < relTouchY) && (relTouchY < 1)) {
+        weightTouchArea.style.transform = "translateY(" + armYtransform * 100 + "%)"
+    }
 }
 
 
@@ -138,7 +157,7 @@ window.onload = function initTempo() {
  *
  */
 let clickTimeout;
-function start() {
+async function start() {
     const arm = document.getElementById("arm");
     const audio = new Audio('/sounds/click.wav');
 
@@ -150,19 +169,20 @@ function start() {
         arm.classList.toggle("moveLeft");
     }, 500);
 
-    function clickInit() {
+    async function clickInit() {
         if (arm.classList.contains("oscillate")) {
             setTimeout(() => {
                 audio.play();
                 click();
-                console.log(fullOscillation);
             }, 250 * fullOscillation);
         }
     }
 
-    function click() {
+    async function click() {
         if (arm.classList.contains("oscillate")) {
             clickTimeout = setTimeout(() => {
+                audio.pause();
+                audio.currentTime = 0;
                 audio.play();
                 click();
             }, 500 * fullOscillation);
