@@ -2,10 +2,14 @@ function exit() {
     window.open("/", "_self");
 }
 
-
 let tempo = 60;
-const beatsPerSecond = tempo / 60;
-const fullOscillation = 2 / beatsPerSecond;
+let beatsPerSecond = tempo / 60;
+let fullOscillation = 2 / beatsPerSecond;
+
+/* This fixes mobile safari not vertically centering the text correctly at page load */
+window.onload = function initTempo() {
+    document.getElementById("bpmValue").textContent = tempo.toString();
+};
 
 /* BPM slider (weight) functionality */
 
@@ -108,7 +112,7 @@ function moveWeight(event) {
     const weightTouchArea = document.getElementById("weightTouch");
     const upperStick = document.getElementById("upperStick");
     const lowerStick = document.getElementById("lowerStick");
-    /* Absolute Y coordinate of the touch point relative to viewheight */
+    /* Absolute Y coordinate of the touch point relative to viewHeight */
     const viewportY = event.touches[0].clientY;
     const armTop = arm.getBoundingClientRect().top;
     const armBottom = arm.getBoundingClientRect().bottom;
@@ -118,8 +122,44 @@ function moveWeight(event) {
     const relTouchY = absTouchY / 241.22;
     /* Transform translateY percentage of the weightTouchArea, from -13% to 49.1% */
     const armYtransform = 0.621 * relTouchY - 0.13;
+    /* Shorten or highten the sticks above and below the weight */
+    const upperStickDelta = 155.8 * relTouchY + 3;
+    const lowerStickDelta = 155.5 * relTouchY + 22.5;
+
     if ((0 < relTouchY) && (relTouchY < 1)) {
         weightTouchArea.style.transform = "translateY(" + armYtransform * 100 + "%)"
+        upperStick.setAttribute('d','m 75.112564,2.4574502 h 8.466667 V '
+            + upperStickDelta
+            +' h -8.466667 z');
+        lowerStick.setAttribute('d','m 75.112625,'
+            + lowerStickDelta
+            + ' h 8.466667 V 184.55954 h -8.466667 z');
+        /*  Since the scale on the metronome isn't linear,
+            we need to make some adjustments. These aren't perfect
+            yet and still leave out a number of tempi
+         */
+        let linearTempo = Math.round(168 * relTouchY + 40);
+        if ((linearTempo > 39) && (linearTempo < 51)) {
+            tempo = linearTempo;
+        }
+        else if ((linearTempo > 50) && (linearTempo < 72)) {
+            tempo = Math.round(linearTempo - linearTempo * relTouchY) + 2;
+        }
+        else if ((linearTempo > 75) && (linearTempo < 82)) {
+            tempo = linearTempo - 16;
+        }
+        else if ((linearTempo > 81) && (linearTempo < 98)) {
+            tempo = linearTempo - 14;
+        }
+        else if ((linearTempo > 97) && (linearTempo < 200)) {
+            tempo = linearTempo - 12;
+        }
+        else if (linearTempo > 199) {
+            tempo = Math.ceil(linearTempo * relTouchY);
+        }
+        document.getElementById("bpmValue").textContent = tempo.toString();
+        beatsPerSecond = tempo / 60;
+        fullOscillation = 2 / beatsPerSecond;
     }
 }
 
@@ -148,46 +188,19 @@ function pause() {
     stop();
 }
 
-/* This fixes mobile safari not vertically centering the text correctly at page load */
-window.onload = function initTempo() {
-    document.getElementById("bpmValue").textContent = tempo.toString();
-};
-
 /**
  *
  */
 let clickTimeout;
 async function start() {
     const arm = document.getElementById("arm");
-    const audio = new Audio('/sounds/click.wav');
 
     arm.classList.toggle("moveLeft");
     setTimeout(() => {
         arm.style.animationDuration = fullOscillation.toString() + "s";
         arm.classList.toggle("oscillate");
-        clickInit();
         arm.classList.toggle("moveLeft");
     }, 500);
-
-    async function clickInit() {
-        if (arm.classList.contains("oscillate")) {
-            setTimeout(() => {
-                audio.play();
-                click();
-            }, 250 * fullOscillation);
-        }
-    }
-
-    async function click() {
-        if (arm.classList.contains("oscillate")) {
-            clickTimeout = setTimeout(() => {
-                audio.pause();
-                audio.currentTime = 0;
-                audio.play();
-                click();
-            }, 500 * fullOscillation);
-        }
-    }
 }
 
 /**
