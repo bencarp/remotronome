@@ -115,14 +115,13 @@ function moveWeight(event) {
     /* Absolute Y coordinate of the touch point relative to viewHeight */
     const viewportY = event.touches[0].clientY;
     const armTop = arm.getBoundingClientRect().top;
-    const armBottom = arm.getBoundingClientRect().bottom;
     /* Absolute Y coordinate of the touch point, but relative to the arm's top */
     const absTouchY = viewportY - armTop;
     /* Relative Y coordinate of the touch point, 0% (Top of arm) to 100% (Bottom of arm) */
     const relTouchY = absTouchY / 241.22;
     /* Transform translateY percentage of the weightTouchArea, from -13% to 49.1% */
     const armYtransform = 0.621 * relTouchY - 0.13;
-    /* Shorten or highten the sticks above and below the weight */
+    /* Shorten or heighten the sticks above and below the weight */
     const upperStickDelta = 155.8 * relTouchY + 3;
     const lowerStickDelta = 155.5 * relTouchY + 22.5;
 
@@ -136,7 +135,8 @@ function moveWeight(event) {
             + ' h 8.466667 V 184.55954 h -8.466667 z');
         /*  Since the scale on the metronome isn't linear,
             we need to make some adjustments. These aren't perfect
-            yet and still leave out a number of tempi
+            yet and still leave out a number of tempi:
+            66 - 67, even from 188 - 198 and uneven from 201 - 205
          */
         let linearTempo = Math.round(168 * relTouchY + 40);
         if ((linearTempo > 39) && (linearTempo < 51)) {
@@ -192,15 +192,50 @@ function pause() {
  *
  */
 let clickTimeout;
-async function start() {
+function start() {
     const arm = document.getElementById("arm");
+    const metronomeArea = document.getElementById("metronome-area");
+    const heartDiv = document.getElementById("heartDiv");
 
     arm.classList.toggle("moveLeft");
     setTimeout(() => {
         arm.style.animationDuration = fullOscillation.toString() + "s";
         arm.classList.toggle("oscillate");
+        clickInit();
         arm.classList.toggle("moveLeft");
     }, 500);
+
+    function clickInit() {
+        if (arm.classList.contains("oscillate")) {
+            setTimeout(() => {
+                if (flash === true) {
+                    metronomeArea.classList.toggle("flash");
+                    heartDiv.classList.toggle("flash");
+                    setTimeout(() => {
+                        metronomeArea.classList.toggle("flash");
+                        heartDiv.classList.toggle("flash");
+                    }, 50)
+                }
+                click();
+            }, 250 * fullOscillation);
+        }
+    }
+
+    function click() {
+        if (arm.classList.contains("oscillate")) {
+            clickTimeout = setTimeout(() => {
+                if (flash === true) {
+                    metronomeArea.classList.toggle("flash");
+                    heartDiv.classList.toggle("flash");
+                    setTimeout(() => {
+                        metronomeArea.classList.toggle("flash");
+                        heartDiv.classList.toggle("flash");
+                    }, 50)
+                }
+                click();
+            }, 500 * fullOscillation);
+        }
+    }
 }
 
 /**
@@ -247,5 +282,21 @@ function stop() {
 
     window.requestAnimationFrame(animateStep);
     arm.style.animationDuration = "";
+}
+
+let flash = false;
+/**
+ *
+ */
+function toggleFlash() {
+    const flashIcon = document.getElementById("flashIcon");
+    if (flash === false) {
+        flashIcon.style.fill = "#ffdd55";
+        flash = true;
+    }
+    else {
+        flashIcon.style.fill = "#f0f0f0";
+        flash = false;
+    }
 }
 

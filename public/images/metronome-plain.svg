@@ -14,7 +14,7 @@
    viewBox="0 0 158.87165 251.93166"
    version="1.1"
    id="metronome-base"
-   inkscape:version="1.0 (947b245b96, 2020-05-01)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="metronome-plain.svg">
   <defs
      id="defs2">
@@ -59,10 +59,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.68333602"
-     inkscape:cx="269.929"
+     inkscape:cx="-180.80094"
      inkscape:cy="416.5594"
      inkscape:document-units="px"
-     inkscape:current-layer="arm"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
@@ -70,11 +70,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1600"
-     inkscape:window-height="873"
+     inkscape:window-width="3190"
+     inkscape:window-height="1725"
      inkscape:window-x="0"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
      lock-margins="true"
      showguides="false" />
   <metadata
@@ -1416,7 +1416,9 @@
        class="cls-2"
        d="m 125.11692,212.94531 a 1.0222419,1.0222419 0 0 1 -0.34771,-0.0615 1.0222419,1.0222419 0 0 1 -0.66447,-1.07333 l 0.78713,-7.24772 h -6.02101 a 1.0222419,1.0222419 0 0 1 -0.8485,-1.59469 l 8.06558,-12.06246 a 1.0222419,1.0222419 0 0 1 1.19601,-0.38844 1.0222419,1.0222419 0 0 1 0.66446,1.02224 l -0.78713,7.29878 h 6.02102 a 1.0222419,1.0222419 0 0 1 0.84849,1.5947 l -8.06552,12.06249 a 1.0222419,1.0222419 0 0 1 -0.8485,0.44975 z"
        id="flashIcon"
-       style="fill:#f0f0f0;fill-opacity:1;stroke-width:1.02224" />
+       style="fill:#f0f0f0;fill-opacity:1;stroke-width:1.02224004"
+       onclick="toggleFlash()"
+       inkscape:connector-curvature="0" />
     <g
        transform="translate(-27.662352,-21.730499)"
        aria-label="Flash"

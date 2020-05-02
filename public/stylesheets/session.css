@@ -386,6 +386,10 @@ a {
     #weight {
     }
 
+    #heartDiv.flash,#metronome-area.flash {
+        background-color: #002232;
+    }
+
     #weight.unwrap {
         animation: weightUnwrap 0.3s;
     }
@@ -477,6 +481,10 @@ a {
 
             #metronome-area {
                 background-color: #002232;
+            }
+
+            #heartDiv.flash,#metronome-area.flash {
+                background-color: #ffdd55;
             }
         }
 }
