@@ -125,7 +125,9 @@ function moveWeight(event) {
     const upperStickDelta = 155.8 * relTouchY + 3;
     const lowerStickDelta = 155.5 * relTouchY + 22.5;
 
-    if ((0 < relTouchY) && (relTouchY < 1)) {
+    let linearTempo = Math.round(168 * relTouchY + 40);
+
+    if ((40 <= linearTempo) && (linearTempo <= 208)) {
         weightTouchArea.style.transform = "translateY(" + armYtransform * 100 + "%)"
         upperStick.setAttribute('d','m 75.112564,2.4574502 h 8.466667 V '
             + upperStickDelta
@@ -133,12 +135,12 @@ function moveWeight(event) {
         lowerStick.setAttribute('d','m 75.112625,'
             + lowerStickDelta
             + ' h 8.466667 V 184.55954 h -8.466667 z');
+
         /*  Since the scale on the metronome isn't linear,
             we need to make some adjustments. These aren't perfect
             yet and still leave out a number of tempi:
             66 - 67, even from 188 - 198 and uneven from 201 - 205
          */
-        let linearTempo = Math.round(168 * relTouchY + 40);
         if ((linearTempo > 39) && (linearTempo < 51)) {
             tempo = linearTempo;
         }
@@ -157,6 +159,32 @@ function moveWeight(event) {
         else if (linearTempo > 199) {
             tempo = Math.ceil(linearTempo * relTouchY);
         }
+        /* Attempt at linear approximation, was not really better
+        if ((linearTempo > 39) && (linearTempo < 51)) {
+            tempo = linearTempo;
+        }
+        else if ((linearTempo >= 51) && (linearTempo < 69)) {
+            tempo = Math.round((1 / 3) * linearTempo + 34);
+        }
+        else if ((linearTempo >= 69) && (linearTempo < 81)) {
+            tempo = Math.round((2 / 3) * linearTempo + 11);
+        }
+        else if ((linearTempo >= 81) && (linearTempo < 96)) {
+            tempo = linearTempo - 16;
+        }
+        else if ((linearTempo >= 96) && (linearTempo < 116)) {
+            tempo = Math.round((5 / 4) * linearTempo - 40);
+        }
+        else if ((linearTempo >= 116) && (linearTempo < 200)) {
+            tempo = linearTempo - 11;
+        }
+        else if ((linearTempo >= 200) && (linearTempo < 206.9)) {
+            tempo = Math.round((3 / 2) * (linearTempo - 74));
+        }
+        else {
+            tempo = 8 * linearTempo - 1456;
+        }
+         */
         document.getElementById("bpmValue").textContent = tempo.toString();
         beatsPerSecond = tempo / 60;
         fullOscillation = 2 / beatsPerSecond;
