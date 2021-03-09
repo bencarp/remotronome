@@ -1,20 +1,32 @@
 /* Skype share button */
-(function(r, d, s) {
-    r.loadSkypeWebSdkAsync = r.loadSkypeWebSdkAsync || function(p) {
-        let js, sjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(p.id)) { return; }
-        js = d.createElement(s);
+function skype() {
+    /* Blink to show user that a second click is necessary (Prevent tracking cookies at page load) */
+    const button = document.getElementById('skype-share');
+    setTimeout(function() {
+        button.style.display = (button.style.display === 'none' ? '' : 'none');
+    }, 500);
+    setTimeout(function() {
+        button.style.display = (button.style.display === 'none' ? '' : 'none');
+    }, 1000);
+
+    const s = "script";
+    window.loadSkypeWebSdkAsync = window.loadSkypeWebSdkAsync || function (p) {
+        let js, sjs = document.getElementsByTagName(s)[0];
+        if (document.getElementById(p.id)) {
+            return;
+        }
+        js = document.createElement(s);
         js.id = p.id;
         js.src = p.scriptToLoad;
-        js.onload = p.callback
+        js.onload = p.callback;
         sjs.parentNode.insertBefore(js, sjs);
     };
     const p = {
         scriptToLoad: 'https://swx.cdn.skype.com/shared/v/latest/skypewebsdk.js',
         id: 'skype_web_sdk'
     };
-    r.loadSkypeWebSdkAsync(p);
-})(window, document, 'script');
+    window.loadSkypeWebSdkAsync(p);
+}
 
 /* Copy to clipboard */
 function copyToClipboard() {

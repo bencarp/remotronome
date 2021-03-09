@@ -1,15 +1,59 @@
+let tempo = 60; /* Beats per minute */
+let beatsPerSecond = tempo / 60;
+let fullOscillation = 2 / beatsPerSecond;
+
 function exit() {
     window.open("/", "_self");
 }
 
-let tempo = 60;
-let beatsPerSecond = tempo / 60;
-let fullOscillation = 2 / beatsPerSecond;
+function reload() {
+    window.open(window.location.href, "_self");
+}
+
+window.onload = function() {
+    initTempo();
+    socketInit();
+}
+
+
+let socket;
+/**
+ *  Types of websocket messages:
+ *      - New client has connected
+ *      - A client has left (= no ping pong response)
+ *      - Play press
+ *      - Pause press
+ *      - Weight was touched, stop and lock other clients' weights to avoid conflict
+ *      - Weight was let go, broadcast the new tempo
+ *      - Count-in broadcast, and active
+ *
+ *
+ */
+function socketInit() {
+    // Environment is declared in session.ejs, sent by nodejs
+    if (environment === 'production') {
+        socket = new WebSocket('wss://' + window.location.hostname + '/ws/');
+    } else {
+        socket = new WebSocket('ws://' + window.location.hostname + ':8020');
+    }
+
+    socket.addEventListener('open', function (event) {
+        console.log('Websocket successfully opened!');
+    });
+
+    socket.addEventListener('error', function (event) {
+        console.log('Something went wrong: ', event.data);
+    })
+
+    socket.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data);
+    });
+}
 
 /* This fixes mobile safari not vertically centering the text correctly at page load */
-window.onload = function initTempo() {
+function initTempo() {
     document.getElementById("bpmValue").textContent = tempo.toString();
-};
+}
 
 /* BPM slider (weight) functionality */
 
@@ -24,7 +68,7 @@ function weightUnwrap(event) {
     if (arm.classList.contains("moveLeft")) return;
 
     // For later (moveWeight)
-    initialViewportY = event.touches[0].clientY;
+    //initialViewportY = event.touches[0].clientY;
     const weight = document.getElementById("weight");
 
     weight.classList.toggle("unwrap");
@@ -54,6 +98,7 @@ function weightUnwrap(event) {
             window.requestAnimationFrame(animateStep);
         }
     }
+
     window.requestAnimationFrame(animateStep);
 }
 

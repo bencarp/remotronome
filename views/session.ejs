@@ -5,18 +5,19 @@
     <meta name="description" content="Making music together via video call can be frustrating. Use Remotronome to make sure everyone is on the same beat." />
     <meta property="og:image" content="/images/splashicon-300dpi.png">
     <link rel="icon" type="image/svg+xml" href="/images/icon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="manifest" href="/static/site.webmanifest">
     <link rel='stylesheet' href='/stylesheets/session.css' />
     <script type="text/javascript" src="/javascripts/clientsession.js"></script>
     <script type="text/javascript" src="/javascripts/sharebuttons.js"></script>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <script>const environment = <%- JSON.stringify(environment) %>;</script>
 </head>
 <body>
     <div id="header">
         <div id="portraitHeader">
-            <a href="javascript:window.location.href=window.location.href">
-                <img id="splashicon" class="portraitHeaderEl" src="/images/icon-transparent.svg" />
-            </a>
+                <img id="splashicon" class="portraitHeaderEl" onclick=reload() src="/images/icon-transparent.svg" />
             <div class="portraitHeaderEl" id="connectionDisplay">
                 <div id="connectionDisplayRowOneDiv">
                     <div id="amountSyncedDiv" class="connectionRowOne">
@@ -60,7 +61,7 @@
             <a id="whatsAppShare" href="<%= "https://wa.me/?text=Please join me for a remote jam session at " + shareURL %>">
                <img id="whatsAppIcon" src="/images/whatsapp.svg" id="whatsapp" />
             </a>
-            <div id="skype-share" class='skype-share' data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='' ><img id="skypeLogo" src="/images/skypelogo.svg" /></div>
+            <div id="skype-share" class='skype-share' onclick=skype() data-href='' data-lang='' data-text="Please join me for a remote jam session at" data-style='' ><img id="skypeLogo" src="/images/skypelogo.svg" /></div>
             <div id="clipboard" onclick=copyToClipboard() >
                 <img id="clipboardIcon" src="/images/clipboard.svg" />
             </div>

@@ -1,4 +1,4 @@
 function newSession() {
     /* For now */
-    window.open("/session", "_self");
+    window.open("/newSession", "_self");
 }

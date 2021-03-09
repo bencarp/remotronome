@@ -6,11 +6,19 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const WebSocket = require('ws');
+const environment = process.env.NODE_ENV || 'development';
 
 const indexRouter = require('./routes/index');
-const sessionRouter = require('./routes/session');
 
 const app = express();
+
+const wss = new WebSocket.Server({port: 8020});
+wss.on('connection', function(ws) {
+    ws.on('message', function(message) {
+        console.log('Received from client: %s', message);
+        ws.send('Server received from client: ' + message);
+    });
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +58,18 @@ app.use('/:id', function(req, res, next) {
     return next();
 });
 
-app.use('/:id', sessionRouter);
+app.use('/:id', function(req, res, next) {
+    res.render('session', {
+        title: 'Remotronome Session',
+
+        environment: environment, // For clientsession.js websocket connection, uses wss in production, ws otherwise
+
+        shareURL: 'https://' + req.get('host') + req.originalUrl,
+
+        synchronizedNumber: 1,
+        connectedNumber: 1
+    });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
