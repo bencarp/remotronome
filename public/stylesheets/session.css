@@ -33,6 +33,10 @@ a {
     text-decoration: none;
 }
 
+img {
+    -webkit-touch-callout: none;
+}
+
     @media all and (orientation:portrait) {
     /* Styles for Portrait screen */
 

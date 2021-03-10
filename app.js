@@ -9,11 +9,10 @@ const logger = require('morgan');
 const WebSocket = require('ws');
 const environment = process.env.NODE_ENV || 'development';
 
-const indexRouter = require('./routes/index');
-
 const app = express();
 
-/** { <sessionID>: Set(n) {'<client 1 ws.id>', '<client 2 ws.id>', ..., '<client n ws.id>'} }
+/** Format: { <sessionID>: Set(n) {'<client 1 ws.id>', '<client 2 ws.id>', ..., '<client n ws.id>'} }
+ *  Example:
  *  {
  *          acTEDQu5cMJU1GCXAvQdKNov: Set(2) {'a51ac1b3-44fd-40e7-94d8-4e7c4ff742b3', 'ff7cbed5-26cc-4147-a6c9-db40e814237f'},
  *          ...
@@ -24,28 +23,45 @@ let sessionClients = {};
 const wss = new WebSocket.Server({port: 8020});
 
 wss.on('connection', function(ws) {
-    ws.send("Connection opened!");
+    //ws.send("Connection opened!");
     ws.id = uuidv4();
     console.log("ws.id: ", ws.id);
 
+    ws.on('error', function(error) {
+        console.log('A Websocket server error occurred: ', error);
+    });
+
     ws.on('message', function(message) {
         const sessionID = JSON.parse(message)['sessionID'];
+        if (!sessionClients.hasOwnProperty(sessionID)) {
+            sessionClients[sessionID] = new Set();
+        }
         const session = sessionClients[sessionID];
         console.log("sessionClients: ", sessionClients);
         if (!session.has(ws.id)) {
+            // New client on this session
             session.add(ws.id);
+
+            // Broadcast (new) number of connected clients on session
+            const messageJSONObj = {};
+            messageJSONObj.connectedNumber = session.size.toString();
+            const messageJSONString = JSON.stringify(messageJSONObj);
+            wss.clients.forEach(function each(client) {
+                if (session.has(client.id)) client.send(messageJSONString);
+            });
         }
+
         console.log(sessionClients);
 
         // console.log('Received from client: %s', message);
-        ws.send('Server received from client: ' + message);
     });
 
     ws.on('close', function(code, reason) {
         console.log(ws.id, " has closed the websocket connection.");
-        // If the connection was closed properly, we can get the sessionID one last
-        // time through the reason parameter. If it wasn't closed properly, we'll
-        // have to go through the trouble of looping through all sets in sessionClients
+        /*  If the connection was closed properly, we can get the sessionID one last
+            time through the reason parameter. If it wasn't closed properly, we'll
+            have to go through the trouble of looping through all sets in sessionClients
+         */
         let sessionID, session;
         if (code === 1000) {
             sessionID = JSON.parse(reason)['sessionID'];
@@ -58,12 +74,27 @@ wss.on('connection', function(ws) {
         }
 
         session = sessionClients[sessionID];
-        session.delete(ws.id);
 
-        // If this was the last websocket client on this sessionID, delete the sessionID.
-        if (session.size === 0) {
-            delete sessionClients[sessionID];
+        if (session !== undefined) {
+            session.delete(ws.id);
+
+            // If this was the last websocket client on this sessionID, delete the sessionID.
+            if (session.size === 0) {
+                delete sessionClients[sessionID];
+            } else {
+                // Broadcast updated number of connected clients to remaining clients
+                const messageJSONObj = {};
+                messageJSONObj.connectedNumber = session.size.toString();
+                const messageJSONString = JSON.stringify(messageJSONObj);
+                wss.clients.forEach(function each(client) {
+                    if (session.has(client.id)) client.send(messageJSONString);
+                });
+            }
+        } else {
+            // Page reloaded before first {client -> server} message with sessionID sent
+            // Nothing to do.
         }
+
         console.log(sessionClients);
     });
 });
@@ -80,7 +111,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.get('/', function(req, res) {
+    res.render('index', {title: 'Remotronome'});
+});
+
 // 18 random bytes, since 18 is divisible by 6 for base64url encoding (base64url has no padding).
 // For scaling purposes (so many users that collision probability rises remarkably), increase by 6
 app.get('/newSession', function (req, res) {
@@ -103,22 +137,6 @@ app.use('/:id', function(req, res, next) {
         return next(createError(404));
     }
 
-    /*  If no websocket is currently open on this session, treat it as a new session
-        and add it to the array of sessionsconsole.log(newSession);
-
-        This is done here and not at the newSession route, because the app's design intentionally
-        allows reusing the same link/sessionID without the first user having to create a new session and
-        distribute it's shareURL every time.
-
-        Since this user hasn't opened a websocket connection yet, he can't be uniquely identified at his point,
-        so we can't add him as a client yet.
-    */
-    //if (!sessionClients.some(session => session[sessionID])) {
-    if (!sessionClients.hasOwnProperty(sessionID)) {
-        //const newSession = {[sessionID]: []};
-        sessionClients[sessionID] = new Set();
-    }
-
     return next();
 });
 
@@ -131,7 +149,7 @@ app.use('/:id', function(req, res, next) {
 
         shareURL: 'https://' + req.get('host') + req.originalUrl,
 
-        synchronizedNumber: 1,
+        synchronizedNumber: '-',
         connectedNumber: 1
     });
 });
