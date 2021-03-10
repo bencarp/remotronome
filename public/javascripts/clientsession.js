@@ -1,14 +1,7 @@
 let tempo = 60; /* Beats per minute */
 let beatsPerSecond = tempo / 60;
 let fullOscillation = 2 / beatsPerSecond;
-
-function exit() {
-    window.open("/", "_self");
-}
-
-function reload() {
-    window.open(window.location.href, "_self");
-}
+const sessionID = window.location.pathname.substr(window.location.pathname.indexOf('/') + 1);
 
 window.onload = function() {
     initTempo();
@@ -27,6 +20,11 @@ let socket;
  *      - Weight was let go, broadcast the new tempo
  *      - Count-in broadcast, and active
  *
+ *      Every Websocket message (including ping-pong/heartbeat) contains:
+ *      - sessionID
+ *      - current Tempo on client
+ *
+ *
  *
  */
 function socketInit() {
@@ -38,6 +36,10 @@ function socketInit() {
     }
 
     socket.addEventListener('open', function (event) {
+        const messageJSONObj = {};
+        messageJSONObj.sessionID = sessionID;
+        const messageJSONString =  JSON.stringify(messageJSONObj);
+        socket.send(messageJSONString);
         console.log('Websocket successfully opened!');
     });
 
@@ -53,6 +55,19 @@ function socketInit() {
 /* This fixes mobile safari not vertically centering the text correctly at page load */
 function initTempo() {
     document.getElementById("bpmValue").textContent = tempo.toString();
+}
+
+function exit() {
+    const messageJSONObj = {};
+    messageJSONObj.sessionID = sessionID;
+    const messageJSONString =  JSON.stringify(messageJSONObj);
+    socket.close(1000, messageJSONString);
+
+    window.open("/", "_self");
+}
+
+function reload() {
+    window.open(window.location.href, "_self");
 }
 
 /* BPM slider (weight) functionality */
@@ -243,6 +258,11 @@ function moveWeight(event) {
 function play() {
     const playIcon = document.getElementById("playIcon");
     const pauseIcon = document.getElementById("pauseIcon");
+
+    const messageJSONObj = {};
+    messageJSONObj.sessionID = sessionID;
+    const messageJSONString =  JSON.stringify(messageJSONObj);
+    socket.send(messageJSONString);
 
     playIcon.style.display = "none";
     pauseIcon.style.display = "inline";
